@@ -1,0 +1,10 @@
+<%= form_with model: @notebook, method: :post do |f| %>
+  <div>
+    <%= f.label :name, 'Notebook name' %>
+    <%= f.text_field :name, placeholder: 'Enter the notebook name' %>
+  </div>
+  <div>
+    <%= link_to 'Cancel', root_path %>
+    <%= f.submit 'Save notebook' %>
+  </div>
+<% end %>

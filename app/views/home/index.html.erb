@@ -1,0 +1,9 @@
+<h1>Hello</h1>
+
+<%= link_to 'New notebook', new_notebook_path, data: { turbo_frame: dom_id(Notebook.new) } %>
+
+<% if @notebooks.empty? %>
+  <%= turbo_frame_tag Notebook.new do %>
+    <p>Nothing to show</p>
+  <% end %>
+<% end %>
