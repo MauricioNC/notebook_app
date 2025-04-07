@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "notebook_#{notebook.id}" do %>
+  <div>
+    <%= link_to notebook.name, notebook_path(notebook) %>
+  </div>
+<% end %>
