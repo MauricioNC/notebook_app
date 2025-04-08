@@ -1,1 +1,16 @@
-<%= render 'notebook', notebook: @notebook %>
+<h2><%= @notebook.name %></h2>
+
+<%= link_to 'New pagae', new_notebook_page_path(@notebook.id), data: { turbo_frame: dom_id(Page.new) } %>
+
+<%= turbo_frame_tag 'pages' do %>
+  <% if @notebook.pages.empty? %>
+    <p>Nothing to show</p>
+  <% else %>
+    <div>
+      <%= turbo_frame_tag Page.new %>
+      <%= turbo_frame_tag 'pages' do %>
+        <%= render @pages %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

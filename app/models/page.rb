@@ -1,3 +1,3 @@
 class Page < ApplicationRecord
-  belongs_to :notebooks
+  belongs_to :notebook
 end
