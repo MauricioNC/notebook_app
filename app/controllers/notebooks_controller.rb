@@ -1,6 +1,8 @@
 class NotebooksController < ApplicationController
   def show
     @notebook = Notebook.find_by(id: params[:id])
+  rescue => e
+    redirect_to root_path, error: "#{e.message}", status: :unprocessable_entity
   end
 
   def new
