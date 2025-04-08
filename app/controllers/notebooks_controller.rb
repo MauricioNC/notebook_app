@@ -1,4 +1,8 @@
 class NotebooksController < ApplicationController
+  def show
+    @notebook = Notebook.find_by(id: params[:id])
+  end
+
   def new
     @notebook = Notebook.new
   end
