@@ -7,7 +7,10 @@ class NotebooksController < ApplicationController
     @notebook = Notebook.new(notebook_params)
 
     if @notebook.save
-      redirect_to root_path
+      respond_to do |f|
+        f.html { redirect_to root_path, notice: "Notebook was successfully created." }
+        f.turbo_stream
+      end
     end
   end
 

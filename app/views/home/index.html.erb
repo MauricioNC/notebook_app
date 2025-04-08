@@ -9,7 +9,7 @@
 <% else %>
   <div>
     <%= turbo_frame_tag Notebook.new %>
-    <%= turbo_frame_tag @notebooks do %>
+    <%= turbo_frame_tag 'notebooks' do %>
       <%= render @notebooks %>
     <% end %>
   </div>
