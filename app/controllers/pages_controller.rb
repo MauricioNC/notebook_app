@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  def show
+    @page = Page.find_by(id: params[:id])
+  end
+
   def new
     @notebook = Notebook.find_by(id: params[:notebook_id])
     @page = @notebook.pages.build

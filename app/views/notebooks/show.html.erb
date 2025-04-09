@@ -9,7 +9,18 @@
     <div>
       <%= turbo_frame_tag Page.new %>
       <%= turbo_frame_tag 'pages' do %>
-        <%= render @pages %>
+        <div>
+          <div>Title</div>
+          <div>Updated at</div>
+          <div></div>
+        </div>
+        <div>
+          <% @pages.each do |page| %>
+            <div><%= link_to page.title, notebook_page_path(@notebook.id, page.id), data: { turbo_frame: '_top' } %></div>
+            <div><%= page.updated_at.strftime("%d-%m-%Y") %></div>
+            <div>Delete</div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <% end %>
