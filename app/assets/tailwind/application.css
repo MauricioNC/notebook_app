@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+  .page_title img{
+    display: none;
+  }
+
+.page_title:hover {
+  user-select: none;
+}
+
+.page_title:hover img {
+  display: flex;
+}
+
+@layer components {
+  #emojis_category_list {
+    display: none;
+    position: absolute;
+    width: 250px;
+    top: 0;
+    left: 170px;
+    background-color: ghostwhite;
+  }
+
+  #emojis_category_list ul li {
+    padding: 8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+}
+

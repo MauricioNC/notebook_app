@@ -1,4 +1,25 @@
-<h1><%= @page.title %></h1>
+<div class="flex flex-row gap-2">
+  <div class="page_title flex flex-row items-center gap-2 w-screen relative">
+    <h1><%= @page.title %></h1>
+    <%= image_tag 'happyface', class: 'w-5', id: 'happy_emoji'%>
+  </div>
+  <div id="emojis_category_list">
+    <div>
+      <span>Pic an emoji category</span>
+      <span class="select-none">&#x274C;</span>
+    </div>
+    <ul>
+      <li>smileys-and-people</li>
+      <li>animals-and-nature</li>
+      <li>food-and-drink</li>
+      <li>travel-and-places</li>
+      <li>activities</li>
+      <li>objects</li>
+      <li>symbols</li>
+      <li>flags</li>
+    </ul>
+  </div>
+</div>
 <div>
   <%= @page.body %>
 </div>
