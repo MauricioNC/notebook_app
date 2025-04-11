@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     if page.update(page_params)
       respond_to do |f|
         f.json do
-          render json: { title: page.title }.to_json
+          render json: { title: page.title, category: page.category }.to_json
         end
       end
     end
@@ -32,6 +32,6 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:title, :emoji)
+    params.require(:page).permit(:title, :category)
   end
 end

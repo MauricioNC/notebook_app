@@ -14,11 +14,11 @@
 
 @layer components {
   #emojis_category_list {
-    display: none;
+    display: block;
     position: absolute;
     width: 250px;
     top: 0;
-    left: 170px;
+    left: 225px;
     background-color: ghostwhite;
   }
 
@@ -27,5 +27,8 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
 
+  #emojis_category_list.closed {
+    display: none;
+  }
 }
 

@@ -1,22 +1,22 @@
-<div class="flex flex-row gap-2" data-controller="editable">
+<div class="flex flex-row gap-2" data-controller="page">
   <div class="page_title flex flex-row items-center gap-2 w-screen relative">
-    <h1 contenteditable="true" data-action='keydown.enter->editable#update_title' data-editable-target='title'><%= @page.title %></h1>
+    <h1 contenteditable="true" data-action='keydown.enter->page#update_title' data-page-target="title"><%= @page.title %></h1>
+    <span id='emoji_code' class="<%= @page.category %>" data-action='load@window->page#setEmoji'></span>
     <%= image_tag 'happyface', class: 'w-5', id: 'happy_emoji'%>
   </div>
-  <div id="emojis_category_list">
+  <div id="emojis_category_list" class="closed">
     <div>
       <span>Pic an emoji category</span>
-      <span class="select-none">&#x274C;</span>
     </div>
-    <ul>
-      <li>smileys-and-people</li>
-      <li>animals-and-nature</li>
-      <li>food-and-drink</li>
-      <li>travel-and-places</li>
-      <li>activities</li>
-      <li>objects</li>
-      <li>symbols</li>
-      <li>flags</li>
+    <ul data-controller="page">
+      <li data-action="click->page#saveCategory ">smileys-and-people</li>
+      <li data-action="click->page#saveCategory ">animals-and-nature</li>
+      <li data-action="click->page#saveCategory ">food-and-drink</li>
+      <li data-action="click->page#saveCategory ">travel-and-places</li>
+      <li data-action="click->page#saveCategory ">activities</li>
+      <li data-action="click->page#saveCategory ">objects</li>
+      <li data-action="click->page#saveCategory ">symbols</li>
+      <li data-action="click->page#saveCategory ">flags</li>
     </ul>
   </div>
 </div>

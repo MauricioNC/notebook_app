@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_08_034737) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_11_055554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "notebooks", force: :cascade do |t|
     t.string "name", null: false
-    t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,6 +26,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_08_034737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "notebook_id", null: false
+    t.string "category"
     t.index ["notebook_id"], name: "index_pages_on_notebook_id"
   end
 
