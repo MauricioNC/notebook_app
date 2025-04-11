@@ -32,21 +32,9 @@ export default class extends Controller {
     document.querySelector("#body").focus()
   }
 
-  async setEmoji() {
-    const emoji_element = document.querySelector("#emoji_code")
-    
-    if (emoji_element.classList.length > 0) {
-      console.log(emoji_element.className)
-      const new_emoji = await this.fetchEmoji(emoji_element.className)
-      emoji_element.innerHTML = new_emoji.htmlCode
-    }
-  }
-
   async saveCategory(e) {
-    const emoji_span = document.querySelector("#emoji_code")
-    const emoji_response = await this.fetchEmoji(e.target.textContent)
-
-    console.log(emoji_span)
+    document.querySelector("#emojis_category_list").style.display = 'none'
+    this.setEmoji()
 
     fetch(`/notebooks/${this.notebook_id}/pages/${this.page_id}`, {
       method: 'PATCH',
@@ -57,10 +45,19 @@ export default class extends Controller {
       body: JSON.stringify({
         authenticity_token: this.token,
         page: {
-          category: emoji_response.category
+          category: e.target.textContent
         }
       })
-    }).then(emoji_span.innerHTML = emoji_response.htmlCode)
+    })
+  }
+
+  async setEmoji() {
+    const emoji_element = document.querySelector("#emoji_code")
+    
+    if (emoji_element.classList.length > 0) {
+      const new_emoji = await this.fetchEmoji(emoji_element.className)
+      emoji_element.innerHTML = new_emoji.htmlCode
+    }
   }
 
   async fetchEmoji(category) {
@@ -68,5 +65,23 @@ export default class extends Controller {
       .then(response => response.text())
       .then(category => JSON.parse(category))
     return emoji
+  }
+
+  updateBody(e) {
+    e.preventDefault()
+
+    fetch(`/notebooks/${this.notebook_id}/pages/${this.page_id}`, {
+      method: 'PATCH',
+      headers: {
+        'X-CSFR-Token': this.token,
+        'Content-Type': 'application/json'  
+      },
+      body: JSON.stringify({
+        authenticity_token: this.token,
+        page: {
+          body: e.target.textContent
+        }
+      })
+    })
   }
 }

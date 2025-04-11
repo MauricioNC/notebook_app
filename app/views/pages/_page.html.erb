@@ -9,23 +9,23 @@
       <span>Pic an emoji category</span>
     </div>
     <ul data-controller="page">
-      <li data-action="click->page#saveCategory ">smileys-and-people</li>
-      <li data-action="click->page#saveCategory ">animals-and-nature</li>
-      <li data-action="click->page#saveCategory ">food-and-drink</li>
-      <li data-action="click->page#saveCategory ">travel-and-places</li>
-      <li data-action="click->page#saveCategory ">activities</li>
-      <li data-action="click->page#saveCategory ">objects</li>
-      <li data-action="click->page#saveCategory ">symbols</li>
-      <li data-action="click->page#saveCategory ">flags</li>
+      <li data-action="click->page#saveCategory" class="select-none">smileys-and-people</li>
+      <li data-action="click->page#saveCategory" class="select-none">animals-and-nature</li>
+      <li data-action="click->page#saveCategory" class="select-none">food-and-drink</li>
+      <li data-action="click->page#saveCategory" class="select-none">travel-and-places</li>
+      <li data-action="click->page#saveCategory" class="select-none">activities</li>
+      <li data-action="click->page#saveCategory" class="select-none">objects</li>
+      <li data-action="click->page#saveCategory" class="select-none">symbols</li>
+      <li data-action="click->page#saveCategory" class="select-none">flags</li>
     </ul>
   </div>
 </div>
 <div>
-  <% if @page.body.nil? %>
-    <div id="body" contenteditable="true">Start writing here...</div>
-  <% else %>
-    <div id="body" contenteditable="true">
-      <%= @page.body %>
-    </div>
+  <%= turbo_frame_tag 'body', data: { controller: 'page' } do %>
+    <% if @page.body.nil? %>
+      <p contenteditable="true" data-action='keydown.enter->page#updateBody'>Start writing here...</p>
+    <% else %>
+      <p contenteditable="true" data-action='keydown.enter->page#updateBody'><%= @page.body %></p>
+    <% end %>
   <% end %>
 </div>
