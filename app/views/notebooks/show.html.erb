@@ -1,26 +1,23 @@
-<h2><%= @notebook.name %></h2>
+<h1 class="text-4xl font-semibold text-neutral-800 mb-4"><%= @notebook.name %></h1>
 
-<%= button_to 'New page', "#{@notebook.id}/pages" %>
+<%= button_to 'New page', "#{@notebook.id}/pages", class: 'p-2 bg-blue-500 text-white rounded-sm w-[130px] text-center font-medium mb-4' %>
 
-<%= turbo_frame_tag 'pages' do %>
+<div>
   <% if @notebook.pages.empty? %>
     <p>Nothing to show</p>
   <% else %>
-    <div>
-      <%= turbo_frame_tag 'pages' do %>
-        <div>
-          <div>Title</div>
-          <div>Updated at</div>
-          <div></div>
-        </div>
-        <div>
-          <% @pages.each do |page| %>
-            <div><%= link_to page.title, notebook_page_path(@notebook.id, page.id), data: { turbo_frame: '_top' } %></div>
-            <div><%= page.updated_at.strftime("%d-%m-%Y") %></div>
-            <div>Delete</div>
-          <% end %>
-        </div>
+    <%# <div class="w-[200px] h-[200px] bg-slate-200 rounded-sm border-[1px] border-slate-200 hover:border-slate-300 hover:shadow-md"> %>
+      <%= turbo_frame_tag 'pages', class: 'w-full flex flex-row gap-3' do %>
+        <% @pages.each do |page| %>
+          <div class="w-[200px] h-[200px] flex flex-col justify-between bg-slate-200 rounded-sm border-[1px] border-slate-200 hover:border-slate-300 hover:shadow-md">
+            <span class="w-full p-2 text-lg"><%= link_to page.title, notebook_page_path(@notebook.id, page.id), data: { turbo_frame: '_top' } %></span>
+            <div class="flex flex-col w-full">
+              <span class="w-full hover:bg-slate-300 p-1">Delete</span>
+              <span class="w-full bg-gray-400 p-1"><%= page.updated_at.strftime("%d-%m-%Y") %></span>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    </div>
+    <%# </div> %>
   <% end %>
-<% end %>
+</div>

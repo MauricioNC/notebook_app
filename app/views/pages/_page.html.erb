@@ -1,10 +1,10 @@
 <div class="flex flex-row gap-2" data-controller="page">
-  <div class="page_title flex flex-row items-center gap-2 w-screen relative">
-    <h1 contenteditable="true" data-action='keydown.enter->page#update_title' data-page-target="title"><%= @page.title %></h1>
+  <div class="page_title flex flex-row items-center gap-2">
+    <h1 contenteditable="true" class="text-4xl font-semibold" data-action='keydown.enter->page#update_title' data-page-target="title"><%= @page.title %></h1>
     <span id='emoji_code' class="<%= @page.category %>" data-action='load@window->page#setEmoji'></span>
     <%= image_tag 'happyface', class: 'w-5', id: 'happy_emoji'%>
   </div>
-  <div id="emojis_category_list" class="closed">
+  <div id="emojis_category_list" class="closed w-[300px]">
     <div>
       <span>Pic an emoji category</span>
     </div>
@@ -20,10 +20,10 @@
     </ul>
   </div>
 </div>
-<div>
+<div class="mt-10">
   <%= turbo_frame_tag 'body', data: { controller: 'page' } do %>
     <% if @page.body.nil? %>
-      <p contenteditable="true" data-action='keydown.enter->page#updateBody'>Start writing here...</p>
+      <p contenteditable="true" data-action='keydown.enter->page#updateBody' placeholder='Start writing here...'></p>
     <% else %>
       <p contenteditable="true" data-action='keydown.enter->page#updateBody'><%= @page.body %></p>
     <% end %>

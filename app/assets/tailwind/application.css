@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-  .page_title img{
-    display: none;
-  }
+.page_title img{
+  display: none;
+}
 
 .page_title:hover {
   user-select: none;
@@ -15,10 +15,8 @@
 @layer components {
   #emojis_category_list {
     display: block;
-    position: absolute;
-    width: 250px;
-    top: 0;
-    left: 225px;
+    position: relative;
+    left: 25px;
     background-color: ghostwhite;
   }
 
@@ -30,5 +28,9 @@
   #emojis_category_list.closed {
     display: none;
   }
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+  content:attr(placeholder)
 }
 

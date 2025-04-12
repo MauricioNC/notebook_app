@@ -18,7 +18,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="w-screen h-screen flex flex-col justify-center items-center">
+    <main class="container flex flex-col justify-start w-full h-full pt-10">
+      <div class="flash">
+        <%= render "layouts/flash" %>
+      </div>
+      <%= yield %>
+    </main>
   </body>
 </html>

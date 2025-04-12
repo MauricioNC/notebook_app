@@ -16,7 +16,7 @@ class NotebooksController < ApplicationController
     if @notebook.save
       respond_to do |f|
         f.html { redirect_to root_path, notice: "Notebook was successfully created." }
-        f.turbo_stream
+        f.turbo_stream { flash.now[:notice] = "Notebook was successfully created." }
       end
     end
   end
