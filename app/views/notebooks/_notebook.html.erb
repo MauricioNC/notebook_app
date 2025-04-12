@@ -1,5 +1,6 @@
 <%= turbo_frame_tag "notebook_#{notebook.id}" do %>
-  <div class="bg-slate-200 p-2 rounded-sm border-[1px] border-slate-200 hover:border-slate-300 hover:shadow-md">
+  <div class="flex flex-row justify-between items-center bg-slate-200 p-2 rounded-sm border-[1px] border-slate-200 hover:border-slate-300 hover:shadow-md">
     <%= link_to notebook.name, notebook_path(notebook), data: { turbo_frame: '_top' } %>
+    <%= button_to "Delete", notebook_path(notebook.id), class: "bg-[crimson] text-white p-2 font-medium rounded-md", method: :delete, data: { turbo_confirm: "Want to delete this noteebok?" } %>
   </div>
 <% end %>
