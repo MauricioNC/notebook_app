@@ -21,6 +21,16 @@ class NotebooksController < ApplicationController
     end
   end
 
+  def destroy
+    @notebook = Notebook.find_by(id: params[:id])
+    @notebook.destroy
+
+    respond_to do |f|
+      f.html { redirect_to root_path, notice: "Notebook was deleted successfully" }
+      f.turbo_stream
+    end
+  end
+
   private
 
   def notebook_params

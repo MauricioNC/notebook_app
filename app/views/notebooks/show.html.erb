@@ -13,7 +13,7 @@
             <div class="w-[200px] h-[200px] flex flex-col justify-between bg-slate-200 rounded-sm border-[1px] border-slate-200 hover:border-slate-300 hover:shadow-md">
               <span class="w-full p-2 text-lg"><%= link_to page.title, notebook_page_path(@notebook.id, page.id), data: { turbo_frame: '_top' } %></span>
               <div class="flex flex-col w-full">
-                <span class="w-full hover:bg-slate-300 p-1"><%= button_to 'Delete', notebook_page_path(@notebook.id, page.id), method: :delete, data: { turbo_confirm: "¿Seguro?" } %></span>
+                <span class="w-full hover:bg-slate-300 p-1"><%= button_to 'Delete', notebook_page_path(@notebook.id, page.id), method: :delete, data: { turbo_confirm: "Want to delete this page?" } %></span>
                 <span class="w-full bg-gray-400 p-1"><%= page.updated_at.strftime("%d-%m-%Y") %></span>
               </div>
             </div>
