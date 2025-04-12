@@ -29,6 +29,17 @@ class PagesController < ApplicationController
     end
   end
 
+  def destroy
+    @page = Page.find_by(id: params[:id])
+    @page.destroy
+
+    # pp notebook_path(params[:notebook_id])
+    respond_to do |f|
+      f.html { redirect_to notebook_path(params[:notebook_id]) }
+      f.turbo_stream
+    end
+  end
+
   private
 
   def page_params
