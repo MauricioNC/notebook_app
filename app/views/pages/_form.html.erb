@@ -1,0 +1,14 @@
+<%= form_with model: [@notebook, @page], method: :post do |f| %>
+  <div>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, placeholder: "Enter the page title" %>
+  </div>
+  <div>
+    <%= f.text_area :body, placeholder: "Start writing your notes here..." %>
+  </div>
+
+  <div>
+    <%= link_to 'Cancel', notebook_path(@notebook.id), data: { turbo_frame: '_top' } %>
+    <%= f.submit 'Create page' %>
+  </div>
+<% end %>

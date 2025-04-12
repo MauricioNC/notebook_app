@@ -1,0 +1,10 @@
+<%= form_with model: @notebook, method: :post do |f| %>
+  <div>
+    <%= f.label :name, 'Notebook name' %>
+    <%= f.text_field :name, placeholder: 'Enter the notebook name', class: 'border-[1px] border-slate-400 p-2 rounded-sm outline-none' %>
+  </div>
+  <div class="flex flex-row gap-3 mt-3">
+    <%= link_to 'Cancel', root_path, class: 'p-2 rounded-md bg-[crimson] text-white text-center' %>
+    <%= f.submit 'Save notebook', class: 'p-2 rounded-md bg-[#50C878] text-white text-center' %>
+  </div>
+<% end %>

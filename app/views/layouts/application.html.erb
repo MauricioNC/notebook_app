@@ -18,8 +18,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="w-screen h-screen flex flex-col justify-center items-center">
+    <main class="container flex flex-col justify-start w-full h-full pt-10">
+      <div class="flash">
+        <%= render "layouts/flash" %>
+      </div>
       <%= yield %>
     </main>
   </body>
